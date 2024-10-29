@@ -1,3 +1,4 @@
+import { fileUploadMiddleware } from "controller-sets-s3-file-upload";
 import express from "express";
 import { ControllerSets } from "express-controller-sets";
 
