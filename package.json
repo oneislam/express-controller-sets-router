@@ -1,6 +1,6 @@
 {
   "name": "express-controller-sets-router",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -8,5 +8,15 @@
   },
   "author": "One Islam",
   "license": "ISC",
-  "description": ""
+  "description": "This helper package is designed for Node/Express.js developers to simplify their code. Use controller.js to streamline code in controllers, and router to reduce code in routes. Just call this function with the necessary arguments, and your API will be ready.",
+  "keywords": [
+    "express-controllers",
+    "controllers",
+    "auto-api",
+    "pre-made-api"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oneislam/express-controller-sets-router"
+  }
 }

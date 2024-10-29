@@ -23,3 +23,40 @@ export const createRouter = ({
 
     return router;
 };
+
+export const createRouterS3upload = ({
+    model,
+    orderBy = "none",
+    query = [],
+    runAfterCreate = "none",
+    path = "files/",
+    fields = [{ name: "file", maxCount: 1 }],
+}) => {
+    const router = express.Router();
+    const controllerSet = new ControllerSets(
+        model,
+        orderBy,
+        query,
+        runAfterCreate
+    );
+
+    router.get("/", controllerSet.getAll.bind(controllerSet));
+    router.post(
+        "/",
+        (req, res, next) => {
+            fileUploadMiddleware(req, res, next, path, fields);
+        },
+        controllerSet.create.bind(controllerSet)
+    );
+    router.get("/:id", controllerSet.getById.bind(controllerSet));
+    router.patch(
+        "/:id",
+        (req, res, next) => {
+            fileUploadMiddleware(req, res, next, path, fields);
+        },
+        controllerSet.update.bind(controllerSet)
+    );
+    router.delete("/:id", controllerSet.delete.bind(controllerSet));
+
+    return router;
+};
