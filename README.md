@@ -11,18 +11,18 @@ controllerSets 1.0.1 was released on Oct 2024. You can find more details on [bac
 
 ## Installation
 * dependencies
-    * [multer]("https://www.npmjs.com/package/multer)
-    * [multer-s3]("https://www.npmjs.com/package/multer-s3)
-    * [@aws-sdk/client-s3]("https://www.npmjs.com/package/@aws-sdk/client-s3")
-    * [controller-sets-s3-file-upload]("https://www.npmjs.com/package/controller-sets-s3-file-upload")
-    * [express-controller-sets]("https://www.npmjs.com/package/express-controller-sets")
-    * [express-controller-sets-router]("https://www.npmjs.com/package/express-controller-sets-router")
+    * [multer](https://www.npmjs.com/package/multer)
+    * [multer-s3](https://www.npmjs.com/package/multer-s3)
+    * [@aws-sdk/client-s3](https://www.npmjs.com/package/@aws-sdk/client-s3)
+    * [controller-sets-s3-file-upload](https://www.npmjs.com/package/controller-sets-s3-file-upload)
+    * [express-controller-sets](https://www.npmjs.com/package/express-controller-sets)
+    * [express-controller-sets-router](https://www.npmjs.com/package/express-controller-sets-router)
 
 ```sh
 $ npm i express-controller-sets-router
 ```
 
-## Using router with no file upload [ControllerSets]("https://www.npmjs.com/package/express-controller-sets")
+## Using router with no file upload [ControllerSets](https://www.npmjs.com/package/express-controller-sets)
 
 ```javascript
 import { createRouter } from "express-controller-sets-router";
@@ -35,6 +35,32 @@ const exampleRouter = createRouter({
     runAfterCreate: (createdObject) => {
         console.log("New object created: ", createdObject);
     },
+});
+
+export default exampleRouter;
+
+```
+
+
+## Using router with file upload [ControllerSets](https://www.npmjs.com/package/express-controller-sets) [controller-sets-s3-file-upload](https://www.npmjs.com/package/controller-sets-s3-file-upload)
+
+
+```javascript
+import { createRouterS3upload } from "express-controller-sets-router";
+import taskModel from "../models/taskModel.js";
+
+const exampleRouter = createRouterS3upload({
+    model: taskModel,
+    orderBy: "-createdAt",
+    query: ["name"],
+    runAfterCreate: (createdObject) => {
+        console.log("New object created: ", createdObject);
+    },
+    path: "users/profiles/files/",
+    fields: [
+        { name: "img", maxCount: 1 },
+        { name: "license", maxCount: 1 },
+    ],
 });
 
 export default exampleRouter;
