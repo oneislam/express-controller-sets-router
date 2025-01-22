@@ -7,8 +7,13 @@ export const createRouter = ({
     orderBy = "none",
     query = [],
     runAfterCreate = "none",
+    middlewares = [],
 }) => {
     const router = express.Router();
+    if (middlewares.length > 0) {
+        router.use(middlewares);
+    }
+
     const controllerSet = new ControllerSets(
         model,
         orderBy,
@@ -30,10 +35,15 @@ export const createRouterS3upload = ({
     orderBy = "none",
     query = [],
     runAfterCreate = "none",
+    middlewares = [],
     path = "files/",
     fields = [{ name: "file", maxCount: 1 }],
 }) => {
     const router = express.Router();
+    if (middlewares.length > 0) {
+        router.use(middlewares);
+    }
+
     const controllerSet = new ControllerSets(
         model,
         orderBy,
