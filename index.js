@@ -6,6 +6,7 @@ export const createRouter = ({
     model,
     orderBy = "none",
     query = [],
+    search = "none",
     runAfterCreate = "none",
     middlewares = [],
 }) => {
@@ -18,6 +19,7 @@ export const createRouter = ({
         model,
         orderBy,
         query,
+        search,
         runAfterCreate
     );
 
@@ -34,6 +36,7 @@ export const createRouterS3upload = ({
     model,
     orderBy = "none",
     query = [],
+    search = "none",
     runAfterCreate = "none",
     middlewares = [],
     path = "files/",
@@ -48,6 +51,7 @@ export const createRouterS3upload = ({
         model,
         orderBy,
         query,
+        search,
         runAfterCreate
     );
 
