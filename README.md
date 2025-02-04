@@ -1,12 +1,23 @@
+# ONE ISLAM
+
+[oneislam](https://oneislam.pro/) is an IT company founded to connect humanity with Islam and usher in a `new era of halal platforms for Muslims`.
+
 # controllerSets
 
-[controller set router](https://oneislam.pro/) This helper package is designed for Node/Express.js developers to reduce boilerplate code. Use controller.js to simplify your controllers, and router to streamline your routes. Just call this function with the necessary arguments, and your API is ready. You can even eliminate the controller entirely, using only the router to get all your APIs up and running.
+[controller set router](https://oneislam.pro/) Tis a helper package for Node/Express.js developers, designed to reduce boilerplate code. Simplify your controllers with controller.js and streamline your routes with the router. Just call the function with the required arguments, and your API is ready. You can even skip the controller entirely and use the router to quickly set up your APIs.
+
+## Update logs:
+* Develop a middleware for `uploading files to S3`.
+* Enable `search` functionality.
+* Set the default `page size` to 50.
+* Add support for custom `middlewares`.
+* Enable S3 file uploads via `.env` configuration.
 
 ## Documentation
 
 The official documentation website is [controllerSets](https://oneislam.pro/).
 
-controllerSets 1.0.1 was released on Oct 2024. You can find more details on [backwards breaking changes in 1.0.0 on our docs site](https://oneislam.pro/). 
+controllerSets 1.0.0 was released on May 2023. You can find more details on [backwards breaking changes in 1.0.0 on our docs site](https://oneislam.pro/). 
 
 
 ## Installation
@@ -19,10 +30,10 @@ controllerSets 1.0.1 was released on Oct 2024. You can find more details on [bac
     * [express-controller-sets-router](https://www.npmjs.com/package/express-controller-sets-router)
 
 ```sh
-$ npm i express-controller-sets-router
+$ npm i multer multer-s3 @aws-sdk/client-s3 controller-sets-s3-file-upload express-controller-sets express-controller-sets-router
 ```
 
-## Using router with no file upload [ControllerSets](https://www.npmjs.com/package/express-controller-sets)
+## Create Rest API using [express-controller-sets-router](https://www.npmjs.com/package/express-controller-sets-router)
 
 ```javascript
 import { createRouter } from "express-controller-sets-router";
@@ -32,9 +43,11 @@ const exampleRouter = createRouter({
     model: taskModel,
     orderBy: "-createdAt",
     query: ["name"],
+    search:"name",
     runAfterCreate: (createdObject) => {
         console.log("New object created: ", createdObject);
     },
+    middlewares: [authenticated],
 });
 
 export default exampleRouter;
@@ -42,7 +55,7 @@ export default exampleRouter;
 ```
 
 
-## Using router with file upload [ControllerSets](https://www.npmjs.com/package/express-controller-sets) [controller-sets-s3-file-upload](https://www.npmjs.com/package/controller-sets-s3-file-upload)
+## Create Rest API with file upload using [express-controller-sets-router](https://www.npmjs.com/package/express-controller-sets-router) [controller-sets-s3-file-upload](https://www.npmjs.com/package/controller-sets-s3-file-upload)
 
 
 ```javascript
@@ -53,9 +66,11 @@ const exampleRouter = createRouterS3upload({
     model: taskModel,
     orderBy: "-createdAt",
     query: ["name"],
+    search:"name",
     runAfterCreate: (createdObject) => {
         console.log("New object created: ", createdObject);
     },
+    middlewares: [authenticated],
     path: "users/profiles/files/",
     fields: [
         { name: "img", maxCount: 1 },
@@ -71,7 +86,7 @@ export default exampleRouter;
 
 ## License
 
-Copyright (c) 2023 LearnBoost &lt;https://oneislam.pro/&gt;
+Copyright (c) 2023 Learn&lt;https://oneislam.pro/&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
