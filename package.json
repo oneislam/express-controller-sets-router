@@ -1,6 +1,6 @@
 {
   "name": "express-controller-sets-router",
-  "version": "1.5.3",
+  "version": "1.5.5",
   "main": "index.js",
   "type": "module",
   "scripts": {

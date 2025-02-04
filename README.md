@@ -38,6 +38,7 @@ $ npm i multer multer-s3 @aws-sdk/client-s3 controller-sets-s3-file-upload expre
 ```javascript
 import { createRouter } from "express-controller-sets-router";
 import taskModel from "../models/taskModel.js";
+import {authenticated} from "../middlewares/auth.js"
 
 const exampleRouter = createRouter({
     model: taskModel,
@@ -61,6 +62,7 @@ export default exampleRouter;
 ```javascript
 import { createRouterS3upload } from "express-controller-sets-router";
 import taskModel from "../models/taskModel.js";
+import {authenticated} from "../middlewares/auth.js"
 
 const exampleRouter = createRouterS3upload({
     model: taskModel,
