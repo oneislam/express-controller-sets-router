@@ -4,7 +4,7 @@
 
 # controllerSets
 
-[controller set router](https://oneislam.pro/) Tis a helper package for Node/Express.js developers, designed to reduce boilerplate code. Simplify your controllers with controller.js and streamline your routes with the router. Just call the function with the required arguments, and your API is ready. You can even skip the controller entirely and use the router to quickly set up your APIs.
+[controller set router](https://oneislam.pro/) This a helper package for Node/Express.js developers, designed to reduce boilerplate code. Simplify your controllers with controller.js and streamline your routes with the router. Just call the function with the required arguments, and your API is ready. You can even skip the controller entirely and use the router to quickly set up your APIs.
 
 ## Update logs:
 * Develop a middleware for `uploading files to S3`.
